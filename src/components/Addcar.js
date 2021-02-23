@@ -12,6 +12,7 @@ function Addcar(props) {
     brand: '', model: '', color: '', fuel: '', year: '', price: ''
   })
 
+    // This is a new comment
   const handleClickOpen = () => {
     setOpen(true);
   };
