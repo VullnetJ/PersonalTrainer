@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.ReactTable{
+  
+  background-color: rgb(215, 250, 216);
+  color: rgb(3, 97, 160);
+  font-style: normal;
+  font-size: large;
+  font-weight: bold;
+}

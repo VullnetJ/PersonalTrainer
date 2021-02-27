@@ -1,25 +1,40 @@
-import React from 'react';
-import './App.css';
-import Carlist from './components/Carlist';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import React, { useState } from "react";
+import "./App.css";
+import FetchCustomersData from "./components/FetchCustomersData";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import FetchTrainingsData from "./components/FetchTrainingsData";
+import CalendarActivity from "./components/CalendarActivity";
+import ListAlt from '@material-ui/icons/ListAlt';
 
 function App() {
+  const [value, setValue] = useState("one");
+
+  const handleChange = (event, value) => {
+    setValue(value);
+  };
+
   return (
-    <div className="App">
-      <AppBar position="static">
-        <Toolbar>
-          
-          <Typography variant="h6">
-            CarShop
-          </Typography>
-        </Toolbar>
+    <div>
+      <AppBar position="static" color="secondary">
+        <Tabs value={value} onChange={handleChange} indicatorColor="secondary"
+          style={{ color: 'white' }}
+          className="w-full h-64" TabIndicatorProps={{
+            style: { background: "orange", height: "5px", top: "40px" }
+          }}>
+          <ListAlt />
+          <Tab textColor="primary" value="one" label="Customer List" />
+          <Tab textColor="secondary" value="two" label="Trainings" />
+          <Tab textColor="secondary" value="three" label="Calendar Activity" />
+        </Tabs>
       </AppBar>
-      <Carlist />
-      
+      <div className="ReactTable">
+        {value === "one" && (<div><FetchCustomersData /></div>)}
+      </div>
+      {value === "two" && (<div> <FetchTrainingsData /></div>)}
+      {value === "three" && (<div><CalendarActivity /></div>)}
     </div>
   );
 }
-
 export default App;
